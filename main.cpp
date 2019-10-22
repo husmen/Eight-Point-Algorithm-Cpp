@@ -1,13 +1,31 @@
 #include <iostream>
 #include "EightPointAlgorithm.hpp"
 
-using Eigen::MatrixXd;
+using namespace std;
 int main()
 {
-  MatrixXd m(2,2);
-  m(0,0) = 3;
-  m(1,0) = 2.5;
-  m(0,1) = -1;
-  m(1,1) = m(1,0) + m(0,1);
-  std::cout << m << std::endl;
+  vector<Point2d> points_left, points_right;
+  double points_left_tmp[16] = {10, 20, 30, 50, 60, 80, 90, 120, 130, 170, 180, 230, 240, 300, 310, 380};
+  double points_right_tmp[16] = {20, 30, 40, 60, 70, 90, 100, 130, 140, 180, 190, 240, 250, 310, 320, 390};
+  for(int i = 0; i < 8; i++)
+  {
+    Point2d p1(points_left_tmp[2 * i], points_left_tmp[2 * i + 1]);
+    Point2d p2(points_right_tmp[2 * i], points_right_tmp[2 * i + 1]);
+    points_left.push_back(p1); 
+    points_right.push_back(p2); 
+  }
+  
+  cout << points_left << endl;
+  cout << points_right << endl;
+
+  EightPointAlgorithm epa = EightPointAlgorithm();
+  Mat fMatrix = epa.F_Matrix_Eight_Point(points_left, points_right);
+  Mat fMatrixNorm = epa.F_Matrix_Normalized_Eight_Point(points_left, points_right);
+
+  cout << "\nFundamental Matrix is:" << endl;
+  cout << fMatrix.size() << fMatrix.type() << endl << fMatrix << endl;
+
+  cout << "\nNormalized Fundamental Matrix is:" << endl;
+  cout << fMatrixNorm.size() << fMatrixNorm.type() << endl << fMatrixNorm << endl;
+  
 }

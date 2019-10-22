@@ -2,7 +2,7 @@
 Implementation of Eight-Point Algorithm in C++
 
 ## Install Requirements:
-Eigen 3.3
+OpenCV
 
     chmod +x install.sh
     ./install.sh
