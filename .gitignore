@@ -31,5 +31,7 @@
 *.out
 *.app
 
-# Build folder
+# Other
+.vscode/
 bin/
+*.jpg

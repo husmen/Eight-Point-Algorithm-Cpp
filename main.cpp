@@ -27,5 +27,13 @@ int main()
 
   cout << "\nNormalized Fundamental Matrix is:" << endl;
   cout << fMatrixNorm.size() << fMatrixNorm.type() << endl << fMatrixNorm << endl;
+
+  //cout << "\nFundamental Matrix by OpenCV is:" << endl;
+  //Mat fundamentalMatrix = findFundamentalMat(points_left, points_right, FM_8POINT);
+  //cout << fundamentalMatrix.size() << fundamentalMatrix.type() << endl << fundamentalMatrix << endl;
+
+  Mat image_left(200, 400, CV_8UC3, Scalar(0,0, 100));
+  Mat image_right(200, 400, CV_8UC3, Scalar(0,100,0));
+  epa.Plot_Epipolar_lines(points_left, points_right, image_left, image_right);
   
 }
